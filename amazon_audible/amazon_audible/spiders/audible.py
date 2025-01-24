@@ -1,6 +1,5 @@
 import scrapy
 
-
 class AudibleSpider(scrapy.Spider):
     name = "audible"
     allowed_domains = ["www.audible.in"]
@@ -24,8 +23,7 @@ class AudibleSpider(scrapy.Spider):
                 'author':book_author,
                 'length':book_length,
                 'User-Agent':response.request.headers['User-Agent'],
-            }
-        
+            }        
 
         pagination = response.xpath('//ul[contains(@class , "pagingElements")]')
         next_page_url = pagination.xpath('.//span[contains(@class , "nextButton")]/a/@href').get()
