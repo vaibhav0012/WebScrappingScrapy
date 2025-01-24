@@ -4,7 +4,9 @@ class AudibleSpider(scrapy.Spider):
     name = "audible"
     allowed_domains = ["www.audible.in"]
     start_urls = ["https://www.audible.in/search"]
-
+    custom_settings = {
+        'DOWNLOAD_DELAY': 0.5,  # Sets a download delay of 0.5 seconds
+    }
     def start_requests(self):
         # Editing the default headers (user-agent)
         yield scrapy.Request(url='https://www.audible.in/search/', callback=self.parse,
